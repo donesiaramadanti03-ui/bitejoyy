@@ -1,0 +1,63 @@
+#floatingPoButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  background-color: #AB7D6C;
+  color: #FCF7DE;
+  padding: 12px 20px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(171, 125, 108, 0.35);
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Baloo 2', cursive;
+  border: none;
+  outline: none;
+
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#floatingPoButton:hover {
+  transform: scale(1.06);
+  background-color: #926757;
+  box-shadow: 0 6px 16px rgba(171, 125, 108, 0.45);
+}
+
+#floatingPoButton:active {
+  transform: scale(0.98);
+}
+
+#floatingPoButton .icon-box {
+  background: rgba(252, 247, 222, 0.2);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+#floatingPoButton .text-box {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  text-align: left;
+}
+
+#floatingPoButton .text-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FCF7DE;
+}
+
+#floatingPoButton .text-subtitle {
+  font-size: 10px;
+  opacity: 0.95;
+  font-weight: 400;
+  font-family: 'Nunito', sans-serif;
+  color: #FCF7DE;
+}

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bite Joy | Handcrafted with Love (Surabaya, Sidoarjo, Malang)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        creamBg: '#FFF9F0',
+                        brandPink: '#FFA3B5',
+                        brandPinkDark: '#F8718D',
+                        brandRed: '#E11D48',
+                        brandDark: '#582C35',   
+                        peachBorder: '#FFE2E8',
+                    },
+                    fontFamily: {
+                        rounded: ['"Baloo 2"', 'cursive', 'sans-serif'],
+                        sans: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#FFF9F0] text-[#582C35] min-h-screen flex flex-col justify-between selection:bg-[#F8718D] selection:text-white">
+
+    <!-- Sticky Header -->
+    <header id="sticky-header" class="sticky top-0 z-40 bg-[#FFF9F0]/95 backdrop-blur-md border-b border-[#FFE2E8] transition-all duration-300 shadow-[0_4px_20px_rgba(225,29,72,0.05)]">
+        <div class="max-w-[720px] mx-auto px-4 py-3 flex items-center justify-between">
+            <button onclick="switchView('home')" class="flex items-center space-x-3 text-left focus:outline-none group">
+                <div class="w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-[#E11D48] via-[#FFA3B5] to-[#582C35] shadow-[0_4px_10px_rgba(225,29,72,0.15)] flex items-center justify-center transition group-hover:scale-105">
+                    <div class="w-full h-full bg-white rounded-full flex items-center justify-center overflow-hidden">
+                        
+                        <img id="header-logo" src="bittlogoo.jpeg" alt="Logo" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/FFE2E8/E11D48?text=JJ'">
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-rounded font-bold text-lg text-[#582C35] leading-tight tracking-tight">Bite Joy</h1>
+                    <p class="text-[11px] text-[#582C35]/70 font-medium">Surabaya • Sidoarjo • Malang</p>
+                </div>
+            </button>
+            <div class="flex items-center space-x-2">
+                <button onclick="switchView('menu')" class="text-xs font-bold text-[#E11D48] bg-white hover:bg-[#FFF0F3] px-3.5 py-2 rounded-xl border border-[#FFE2E8] shadow-[0_4px_12px_rgba(225,29,72,0.06)] transition">
+                    <i class="fa-solid fa-utensils mr-1 text-[#F8718D]"></i> Menu
+                </button>
+                <button onclick="toggleCartDrawer(true)" class="relative bg-white hover:bg-[#FFF0F3] border border-[#FFE2E8] text-[#582C35] p-2.5 rounded-full shadow-[0_4px_12px_rgba(225,29,72,0.06)] transition active:scale-95 flex items-center justify-center">
+                    <i class="fa-solid fa-basket-shopping text-lg text-[#E11D48]"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-[#E11D48] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md hidden">0</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="menu-subnav" class="bg-[#FFF9F0]/95 border-t border-[#FFE2E8] px-4 py-2 hidden">
+            <div id="category-tabs" class="max-w-[720px] mx-auto flex space-x-2 overflow-x-auto no-scrollbar scroll-smooth"></div>
+        </div>
+    </header>
+
+    <main class="max-w-[720px] w-full mx-auto px-4 py-4 mb-24 flex-grow">
+
+        <!-- ================= VIEW 1: LANDING PAGE ================= -->
+        <div id="view-home" class="space-y-6">
+            <section class="bg-gradient-to-br from-white via-white to-[#FFF0F3] rounded-3xl p-6 sm:p-8 shadow-[0_10px_30px_rgba(225,29,72,0.07)] border border-[#FFE2E8] relative overflow-hidden text-center">
+                <!-- Watermark Donut & Cookies -->
+                <div class="absolute -right-6 -bottom-6 opacity-10 pointer-events-none flex space-x-2">
+                    <span class="text-8xl">🍓</span>
+                    <span class="text-8xl">🍩</span>
+                </div>
+                <div class="inline-flex items-center space-x-1.5 bg-[#FFF0F3] text-[#E11D48] px-3.5 py-1 rounded-full text-xs font-bold mb-3 shadow-sm border border-[#FFE2E8]">
+                    <i class="fa-solid fa-heart text-[#E11D48]"></i>
+                    <span id="hero-tagline-badge">Handcrafted with love</span>
+                </div>
+                <h2 class="font-rounded font-extrabold text-2xl sm:text-3xl text-[#582C35] mb-3 leading-tight">
+                    Donut Anti Gagal, Mood Auto Naik 
+                </h2>
+                <p class="text-xs sm:text-sm text-[#582C35]/80 mb-6 leading-relaxed max-w-lg mx-auto">
+                    Freshly baked tanpa pengawat.
+                </p>
+                <div class="space-y-2 sm:space-y-0 sm:flex sm:space-x-3 justify-center">
+                    <button onclick="switchView('menu')" class="w-full sm:w-auto bg-[#E11D48] hover:bg-[#C0153B] text-white font-rounded font-bold py-3.5 px-8 rounded-2xl shadow-[0_8px_20px_rgba(225,29,72,0.35)] flex items-center justify-center space-x-2 transition active:scale-[0.98]">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>Lihat Menu & Pesan Sekarang</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="bg-[#FFF0F3] rounded-2xl p-4 border border-[#FFE2E8] flex items-center space-x-3 shadow-[0_4px_15px_rgba(225,29,72,0.04)]">
+                <div class="w-10 h-10 rounded-xl bg-[#E11D48] text-white flex items-center justify-center flex-shrink-0 text-lg shadow-sm">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <div>
+                    <h4 class="font-rounded font-bold text-xs text-[#582C35]">Informasi Pre-Order (PO)</h4>
+                    <p id="home-po-info" class="text-[11px] text-[#582C35]/80 leading-snug">Pre-order dibuka setiap hari, pengiriman fresh sesuai jadwal mingguan.</p>
+                </div>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="font-rounded font-extrabold text-lg text-[#582C35] px-1 flex items-center justify-between">
+                    <span>Pilihan Kategori Unggulan</span>
+                    <button onclick="switchView('menu')" class="text-xs text-[#E11D48] font-bold hover:underline">Semua Menu →</button>
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div onclick="switchView('menu')" class="bg-white p-4 rounded-2xl border border-[#FFE2E8] shadow-[0_8px_25px_rgba(225,29,72,0.06)] flex items-center space-x-4 cursor-pointer hover:border-[#E11D48] hover:shadow-[0_10px_30px_rgba(225,29,72,0.12)] transition text-left">
+                        <div class="w-12 h-12 rounded-2xl bg-[#FFF0F3] text-2xl flex items-center justify-center flex-shrink-0 shadow-inner">🤍</div>
+                        <div class="flex-grow">
+                            <h4 class="font-rounded font-extrabold text-sm text-[#582C35]">CLASSIC</h4>
+                            <p class="text-[11px] text-[#582C35]/70">Rasa original yang otentik dan empuk.</p>
+                        </div>
+                    </div>
+                    <div onclick="switchView('menu')" class="bg-white p-4 rounded-2xl border border-[#FFE2E8] shadow-[0_8px_25px_rgba(225,29,72,0.06)] flex items-center space-x-4 cursor-pointer hover:border-[#E11D48] hover:shadow-[0_10px_30px_rgba(225,29,72,0.12)] transition text-left">
+                        <div class="w-12 h-12 rounded-2xl bg-[#FFF0F3] text-2xl flex items-center justify-center flex-shrink-0 shadow-inner">🍫</div>
+                        <div class="flex-grow">
+                            <h4 class="font-rounded font-extrabold text-sm text-[#582C35]">CHOCO LOVERS</h4>
+                            <p class="text-[11px] text-[#582C35]/70">Pencinta cokelat pekat & lumer.</p>
+                        </div>
+                    </div>
+                    <div onclick="switchView('menu')" class="bg-white p-4 rounded-2xl border border-[#FFE2E8] shadow-[0_8px_25px_rgba(225,29,72,0.06)] flex items-center space-x-4 cursor-pointer hover:border-[#E11D48] hover:shadow-[0_10px_30px_rgba(225,29,72,0.12)] transition text-left">
+                        <div class="w-12 h-12 rounded-2xl bg-[#FFF0F3] text-2xl flex items-center justify-center flex-shrink-0 shadow-inner">🍓</div>
+                        <div class="flex-grow">
+                            <h4 class="font-rounded font-extrabold text-sm text-[#582C35]">SWEET & PRETTY</h4>
+                            <p class="text-[11px] text-[#582C35]/70">Manis segar buah beri & stroberi.</p>
+                        </div>
+                    </div>
+                    <div onclick="switchView('menu')" class="bg-white p-4 rounded-2xl border border-[#FFE2E8] shadow-[0_8px_25px_rgba(225,29,72,0.06)] flex items-center space-x-4 cursor-pointer hover:border-[#E11D48] hover:shadow-[0_10px_30px_rgba(225,29,72,0.12)] transition text-left">
+                        <div class="w-12 h-12 rounded-2xl bg-[#FFF0F3] text-2xl flex items-center justify-center flex-shrink-0 shadow-inner">💥</div>
+                        <div class="flex-grow">
+                            <h4 class="font-rounded font-extrabold text-sm text-[#582C35]">JOY BOMB 💥</h4>
+                            <p class="text-[11px] text-[#582C35]/70">Kejutan rasa spesial paling nagih.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- /view-home -->
+
+       <!-- ================= VIEW 2: CATALOG & MENU ================= -->
+        <div id="view-menu" class="space-y-6 hidden">
+            <div class="flex items-center justify-between">
+                <button onclick="switchView('home')" class="inline-flex items-center space-x-1.5 text-xs font-bold text-[#582C35] bg-white hover:bg-[#FFF0F3] px-3.5 py-2 rounded-xl border border-[#FFE2E8] shadow-[0_4px_12px_rgba(225,29,72,0.05)] transition">
+                    <i class="fa-solid fa-arrow-left text-[#E11D48]"></i>
+                    <span>Beranda</span>
+                </button>
+                <div class="bg-[#FFF0F3] border border-[#FFE2E8] px-3 py-1.5 rounded-xl text-[11px] text-[#582C35] font-bold flex items-center space-x-1.5 shadow-sm">
+                    <i class="fa-solid fa-circle-info text-[#E11D48]"></i>
+                    <span>Tap + untuk menambah pesanan, lalu tekan Lihat Pesanan.</span>
+                </div>
+            </div>
+
+            <div id="menu-container" class="space-y-8">
+                <div class="text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-[#E11D48] border-t-transparent mb-2"></div>
+                    <p class="text-xs text-[#582C35]/80 font-semibold">Memuat menu lezat...</p>
+                </div>
+            </div>
+
+            <!-- BAGIAN PILIHAN PAKET BOX SPESIAL -->
+            <div class="space-y-4 pt-6 border-t border-[#FFE2E8]">
+                <div class="text-center space-y-1">
+                    <span class="bg-[#FFF0F3] text-[#E11D48] px-3 py-1 rounded-full text-[11px] font-bold border border-[#FFE2E8]">
+                         Special Bundles 
+                    </span>
+                    <h3 class="font-rounded font-extrabold text-xl text-[#582C35]">Pilihan Paket Box Spesial</h3>
+                    <p class="text-xs text-[#582C35]/70 max-w-md mx-auto">Lebih hemat dan cocok untuk dibagikan bersama orang tersayang!</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Paket 1: Little Box, Big Smiles -->
+                    <div class="bg-gradient-to-br from-white via-white to-[#FFF0F3] p-5 rounded-3xl border border-[#FFE2E8] shadow-[0_8px_25px_rgba(225,29,72,0.06)] flex flex-col justify-between space-y-4 transition hover:border-[#E11D48]">
+                        <div class="space-y-2">
+                            <div class="w-12 h-12 rounded-2xl bg-[#FFF0F3] text-[#E11D48] text-xl flex items-center justify-center shadow-inner">
+                                <i class="fa-solid fa-gift"></i>
+                            </div>
+                            <h4 class="font-rounded font-extrabold text-base text-[#582C35]">Little Box, Big Smiles</h4>
+                            <p class="text-xs text-[#582C35]/80 leading-relaxed">Pilihan box spesial berisi donat varian classic yang menghadirkan keceriaan di setiap gigitan.</p>
+                        </div>
+                        <div class="space-y-2.5 pt-2 border-t border-[#FFE2E8]">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-rounded font-bold text-[#582C35]">Box isi 6 Pcs</span>
+                                <span class="font-rounded font-extrabold text-[#E11D48]">Rp 40.000</span>
+                            </div>
+                            <button onclick="addPackageToCart('Little Box, Big Smiles (Box isi 6)', 40000)" class="w-full bg-[#FFF0F3] hover:bg-[#E11D48] hover:text-white text-[#E11D48] border border-[#FFE2E8] py-2 rounded-xl font-rounded font-bold text-xs flex items-center justify-center space-x-1.5 transition active:scale-95">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                                <span>Tambah Box isi 6</span>
+                            </button>
+
+                            <div class="flex items-center justify-between text-xs pt-1">
+                                <span class="font-rounded font-bold text-[#582C35]">Box isi 12 Pcs</span>
+                                <span class="font-rounded font-extrabold text-[#E11D48]">Rp 82.000</span>
+                            </div>
+                            <button onclick="addPackageToCart('Little Box, Big Smiles (Box isi 12)', 82000)" class="w-full bg-[#E11D48] hover:bg-[#C0153B] text-white py-2 rounded-xl font-rounded font-bold text-xs flex items-center justify-center space-x-1.5 shadow-sm transition active:scale-95">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                                <span>Tambah Box isi 12</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Paket 2: The Joy Bomb Box -->
+                    <div class="bg-gradient-to-br from-white via-white to-[#FFF0F3] p-5 rounded-3xl border border-[#FFE2E8] shadow-[0_8px_25px_rgba(225,29,72,0.06)] flex flex-col justify-between space-y-4 transition hover:border-[#E11D48]">
+                        <div class="space-y-2">
+                            <div class="w-12 h-12 rounded-2xl bg-[#FFF0F3] text-[#E11D48] text-xl flex items-center justify-center shadow-inner">
+                                <i class="fa-solid fa-box-open"></i>
+                            </div>
+                            <h4 class="font-rounded font-extrabold text-base text-[#582C35]">The Joy Bomb Box</h4>
+                            <p class="text-xs text-[#582C35]/80 leading-relaxed">Kumpulan donat varian Joy Bomb lumer pilihan dengan ledakan rasa yang paling nagih!</p>
+                        </div>
+                        <div class="space-y-2.5 pt-2 border-t border-[#FFE2E8]">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-rounded font-bold text-[#582C35]">Box isi 6 Pcs</span>
+                                <span class="font-rounded font-extrabold text-[#E11D48]">Rp 46.000</span>
+                            </div>
+                            <button onclick="addPackageToCart('The Joy Bomb Box (Box isi 6)', 46000)" class="w-full bg-[#FFF0F3] hover:bg-[#E11D48] hover:text-white text-[#E11D48] border border-[#FFE2E8] py-2 rounded-xl font-rounded font-bold text-xs flex items-center justify-center space-x-1.5 transition active:scale-95">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                                <span>Tambah Box isi 6</span>
+                            </button>
+
+                            <div class="flex items-center justify-between text-xs pt-1">
+                                <span class="font-rounded font-bold text-[#582C35]">Box isi 12 Pcs</span>
+                                <span class="font-rounded font-extrabold text-[#E11D48]">Rp 94.000</span>
+                            </div>
+                            <button onclick="addPackageToCart('The Joy Bomb Box (Box isi 12)', 94000)" class="w-full bg-[#E11D48] hover:bg-[#C0153B] text-white py-2 rounded-xl font-rounded font-bold text-xs flex items-center justify-center space-x-1.5 shadow-sm transition active:scale-95">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                                <span>Tambah Box isi 12</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- AKHIR BAGIAN PAKET BOX SPESIAL -->
+
+        </div>
+        <!-- /view-menu -->
+
+        <!-- ============ KATA MEREKA ============ -->
+        <section class="mt-10 pt-6 border-t border-[#FFE2E8] space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="font-rounded font-extrabold text-lg text-[#582C35]">Kata Mereka</h3>
+                    <div id="reviews-summary-container" class="flex items-center space-x-1.5 text-xs mt-0.5">
+                        <span id="reviews-avg-text" class="font-bold text-[#582C35] hidden">5.0</span>
+                        <div id="reviews-stars-container" class="text-amber-400 text-[11px] hidden">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <span id="reviews-count-text" class="text-[#582C35]/70">(Belum ada ulasan)</span>
+                    </div>
+                </div>
+                <button id="toggle-all-reviews-btn" onclick="toggleAllReviews()" class="text-xs text-[#E11D48] font-bold hover:underline hidden">Lihat semua (0)</button>
+            </div>
+
+            <div id="reviews-status-container" class="text-center py-6 hidden">
+                <div class="inline-block animate-spin rounded-full h-6 w-6 border-3 border-[#E11D48] border-t-transparent mb-1"></div>
+                <p class="text-xs text-[#582C35]/80 font-semibold">Memuat ulasan pelanggan...</p>
+            </div>
+
+            <div id="reviews-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-[#FFE2E8] shadow-[0_8px_25px_rgba(225,29,72,0.06)] space-y-3 mt-6">
+                <h4 class="font-rounded font-extrabold text-sm text-[#582C35] flex items-center space-x-1.5">
+                    <i class="fa-solid fa-pen-nib text-[#E11D48]"></i>
+                    <span>Tulis Ulasan Anda</span>
+                </h4>
+                <form id="review-form" onsubmit="submitReview(event)" class="space-y-3">
+                    <div style="display:none;" aria-hidden="true">
+                        <label>Website (Jangan diisi)</label>
+                        <input type="text" id="hp-website" name="hp-website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#582C35]/80 mb-1">Nama * (maks 30 karakter)</label>
+                        <input type="text" id="review-name" maxlength="30" placeholder="cth: Kak Siska" required
+                            class="w-full text-xs px-3 py-2.5 rounded-xl border border-[#FFE2E8] bg-[#FFF9F0]/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E11D48]/50 text-[#582C35]">
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#582C35]/80 mb-1">Rating Bintang *</label>
+                        <div id="star-rating-picker" class="flex items-center space-x-2 text-xl text-amber-300 cursor-pointer py-1">
+                            <i class="fa-solid fa-star transition hover:scale-110" data-value="1" onclick="setRating(1)"></i>
+                            <i class="fa-solid fa-star transition hover:scale-110" data-value="2" onclick="setRating(2)"></i>
+                            <i class="fa-solid fa-star transition hover:scale-110" data-value="3" onclick="setRating(3)"></i>
+                            <i class="fa-solid fa-star transition hover:scale-110" data-value="4" onclick="setRating(4)"></i>
+                            <i class="fa-solid fa-star transition hover:scale-110" data-value="5" onclick="setRating(5)"></i>
+                            <span id="rating-text-label" class="text-xs text-[#582C35]/70 font-semibold ml-2">(Pilih bintang)</span>
+                        </div>
+                        <input type="hidden" id="review-rating-val" value="0">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="text-[11px] font-bold text-[#582C35]/80">Komentar * (maks 300 karakter)</label>
+                            <span id="char-count" class="text-[10px] text-[#582C35]/60">0 / 300</span>
+                        </div>
+                        <textarea id="review-comment" maxlength="300" rows="3" placeholder="Bagaimana pengalaman Anda menikmati produk Bite Joy?" required oninput="updateCharCount()"
+                            class="w-full text-xs px-3 py-2.5 rounded-xl border border-[#FFE2E8] bg-[#FFF9F0]/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E11D48]/50 text-[#582C35] resize-none"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#582C35]/80 mb-1">Foto Produk (Opsional)</label>
+                        <input type="file" id="review-image" accept="image/*"
+                            class="w-full text-xs text-[#582C35] file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-[#FFF0F3] file:text-[#E11D48] hover:file:bg-[#FFE2E8] cursor-pointer">
+                    </div>
+
+                    <button type="submit" id="review-submit-btn" class="w-full bg-[#E11D48] hover:bg-[#C0153B] text-white font-rounded font-bold py-2.5 px-4 rounded-xl shadow-[0_6px_20px_rgba(225,29,72,0.35)] transition active:scale-[0.98] text-xs">
+                        Kirim Ulasan
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- About & Contact Section -->
+        <section class="mt-12 bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_25px_rgba(225,29,72,0.06)] border border-[#FFE2E8] space-y-4">
+            <h3 class="font-rounded font-extrabold text-lg text-[#E11D48] flex items-center space-x-2">
+                <i class="fa-solid fa-store"></i>
+                <span>Tentang & Lokasi Pengiriman</span>
+            </h3>
+            <p class="text-xs text-[#582C35]/80 leading-relaxed">
+                Bite Joy melayani pengiriman fresh-baked goods langsung ke rumah Anda di wilayah <strong class="text-[#582C35]">Surabaya, Sidoarjo, dan Malang</strong>. Setiap produk dibuat higienis dengan bahan-bahan pilihan berkualitas tinggi.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-[#FFE2E8] text-xs">
+                <div class="flex items-start space-x-3">
+                    <i class="fa-solid fa-location-dot text-[#E11D48] mt-0.5"></i>
+                    <div>
+                        <span class="font-bold block text-[#582C35]">Area Layanan</span>
+                        <span id="footer-address" class="text-[#582C35]/70">Jl. Blambangan 3 No. 62, Surabaya</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-brands fa-whatsapp text-green-600 text-sm"></i>
+                    <div>
+                        <span class="font-bold block text-[#582C35]">WhatsApp CS</span>
+                        <span id="footer-wa" class="text-[#582C35]/70">6289502942403</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <i class="fa-brands fa-instagram text-pink-600 text-sm"></i>
+                    <div>
+                        <span class="font-bold block text-[#582C35]">Instagram</span>
+                        <a id="footer-ig" href="https://www.instagram.com/bitee.joy?utm_source=ig_web_button_share_sheet&vrfl=ZDNlZDc0MzIxNw==" target="_blank" class="text-[#E11D48] hover:underline font-semibold">@bitee.joy</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#582C35] text-[#FFF9F0] py-6 px-4 text-center text-xs space-y-2 mt-auto shadow-[0_-4px_20px_rgba(88,44,53,0.1)]">
+        <p class="font-rounded font-bold text-sm tracking-wide text-white">Bite Joy</p>
+        <p class="text-[#FFF9F0]/70 text-[11px]">Handcrafted with love for Surabaya, Sidoarjo & Malang.</p>
+        <p class="text-[10px] text-[#FFF9F0]/40 pt-2 border-t border-[#733B47]">© 2026 Bite Joy.</p>
+    </footer>
+
+   <!-- Floating Cart Bar -->
+    <div id="floating-cart-bar" class="fixed bottom-0 left-0 right-0 z-50 p-3 bg-transparent pointer-events-none transition-transform duration-300 transform translate-y-full">
+        <div class="max-w-[720px] mx-auto pointer-events-auto">
+            <button onclick="toggleCartDrawer(true)" class="w-full bg-[#E11D48] text-white py-3.5 px-4 rounded-2xl shadow-lg flex items-center justify-between transition active:scale-[0.98]">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white/25 px-3.5 py-1.5 rounded-xl text-xs font-bold text-white">
+                        <span id="cart-total-items">0</span> item
+                    </div>
+                    <span class="font-bold text-base text-white tracking-wide" id="cart-total-price">Rp 0</span>
+                </div>
+                <div class="flex items-center space-x-1.5 font-bold text-sm bg-white/25 px-4 py-2 rounded-xl text-white">
+                    <span>Lihat Pesanan</span>
+                    <i class="fa-solid fa-chevron-up text-xs ml-1"></i>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart & Checkout Bottom Sheet Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden transition-opacity opacity-0 flex flex-col justify-end">
+        <div id="cart-drawer-content" class="bg-white w-full max-w-[720px] mx-auto rounded-t-3xl p-5 shadow-[0_-10px_40px_rgba(88,44,53,0.15)] max-h-[85vh] flex flex-col transform translate-y-full transition-transform duration-300">
+            <div class="flex items-center justify-between pb-3 border-b border-[#FFE2E8]">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-basket-shopping text-[#E11D48] text-lg"></i>
+                    <h3 class="font-rounded font-extrabold text-lg text-[#582C35]">Keranjang Pesanan</h3>
+                </div>
+                <button onclick="toggleCartDrawer(false)" class="w-8 h-8 rounded-full bg-[#FFF9F0] hover:bg-[#FFE2E8] text-[#582C35] flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="cart-items-list" class="py-4 overflow-y-auto space-y-3 flex-grow max-h-[35vh] no-scrollbar"></div>
+
+            <div class="pt-3 border-t border-[#FFE2E8] space-y-3 overflow-y-auto">
+                <h4 class="font-rounded font-bold text-sm text-[#582C35]">Data Pemesan & Pengiriman</h4>
+                <div class="space-y-2">
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#582C35]/80 mb-1">Nama Lengkap *</label>
+                        <input type="text" id="buyer-name" placeholder="cth: Kak Rina" class="w-full text-xs px-3 py-2.5 rounded-xl border border-[#FFE2E8] bg-[#FFF9F0]/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E11D48]/50 text-[#582C35]">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] font-bold text-[#582C35]/80 mb-1">Kota Tujuan *</label>
+                            <input type="text" id="buyer-city" placeholder="Contoh: Surabaya"
+                                class="w-full text-xs px-3 py-2.5 rounded-xl border border-[#FFE2E8] bg-[#FFF9F0]/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E11D48]/50 text-[#582C35] placeholder:text-[#582C35]/40">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-[#582C35]/80 mb-1">Tanggal PO / Kirim *</label>
+                            <input type="date" id="buyer-date" class="w-full text-xs px-3 py-2.5 rounded-xl border border-[#FFE2E8] bg-[#FFF9F0]/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E11D48]/50 text-[#582C35]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-[#582C35]/80 mb-1">Alamat Lengkap & Catatan Pesanan</label>
+                        <textarea id="buyer-note" rows="2" placeholder="cth: Jl. Raya Darmo No. 12, catat jika ada request khusus" class="w-full text-xs px-3 py-2.5 rounded-xl border border-[#FFE2E8] bg-[#FFF9F0]/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#E11D48]/50 text-[#582C35] resize-none"></textarea>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <div class="flex items-center justify-between mb-3 bg-[#FFF9F0] p-2.5 rounded-xl border border-[#FFE2E8]">
+                        <span class="text-xs font-bold text-[#582C35]/80">Total Pembayaran:</span>
+                        <span id="cart-grand-total" class="font-rounded font-extrabold text-base text-[#E11D48]">Rp 0</span>
+                    </div>
+                    <button onclick="checkoutToWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-rounded font-bold py-3.5 px-4 rounded-2xl shadow-[0_6px_20px_rgba(22,163,74,0.25)] flex items-center justify-center space-x-2 transition active:scale-[0.98]">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Pesan via WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Notification Modal -->
+    <div id="notification-modal" class="fixed inset-0 z-[60] bg-black/40 hidden items-center justify-center px-4">
+        <div class="bg-white rounded-2xl p-5 max-w-xs w-full text-center shadow-2xl border border-[#FFE2E8]">
+            <div id="modal-icon" class="w-12 h-12 bg-[#FFF9F0] text-[#E11D48] rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h4 id="modal-title" class="font-rounded font-extrabold text-base text-[#582C35] mb-1">Pemberitahuan</h4>
+            <p id="modal-message" class="text-xs text-[#582C35]/80 mb-4 leading-relaxed">Pesan notifikasi...</p>
+            <button onclick="closeNotification()" class="w-full bg-[#E11D48] hover:bg-[#C0153B] text-white text-xs font-bold py-2.5 rounded-xl transition">
+                Mengerti
+            </button>
+        </div>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyABC6-6qn34qVS5PDQVQLgiGRU024zp4H8",
+        authDomain: "bitejoyreviews.firebaseapp.com",
+        projectId: "bitejoyreviews",
+        storageBucket: "bitejoyreviews.firebasestorage.app",
+        messagingSenderId: "146914227930",
+        appId: "1:146914227930:web:1e2cf5c6ff738a841057e3",
+        measurementId: "G-DSVPH2SPDR"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getFirestore(app);
+      window.db = db;
+    </script>
+
+    <script type="module" src="func.js"></script>
+</body>
+</html>
